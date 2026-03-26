@@ -4,6 +4,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 
 
@@ -17,8 +18,10 @@ public class Person {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long  id;
     @NonNull
+    @NotBlank(message = "firstname must be set")
     private String firstName;
     @NonNull
+    @NotBlank(message = "lastName must be set")
     private String lastName;
 
 }

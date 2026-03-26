@@ -4,15 +4,20 @@ package com.example.microservicespro.service;
 import com.example.microservicespro.model.Product;
 import com.example.microservicespro.repository.ProductRepository;
 import lombok.RequiredArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     final private ProductRepository productRepository;
+    Logger log= LoggerFactory.getLogger(ProductService.class);
     public List<Product> getProducts(){
+        log.info("getting all products");
         return productRepository.findAll();
     }
     public Product getProductById(long id) {

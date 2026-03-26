@@ -1,6 +1,7 @@
 package com.example.microservicespro.service;
 
 
+import com.example.microservicespro.exception.PersonneNotFoundException;
 import com.example.microservicespro.model.Person;
 import com.example.microservicespro.repository.PersonRepository;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +18,7 @@ public class PersonService {
         return personRepository.findAll();
     }
     public Person getPersonById(long id){
-        return personRepository.findById(id).orElseThrow();
+        return personRepository.findById(id).orElseThrow(() -> new PersonneNotFoundException(id));
     }
     public Person addPerson(Person person){
         return personRepository.save(person);
